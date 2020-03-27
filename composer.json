@@ -1,0 +1,26 @@
+{
+    "name": "verdient/validator",
+    "description": "A library for validating",
+    "type": "library",
+    "keywords": ["validate", "validator"],
+    "homepage": "https://github.com/Verdient/validator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Verdient.",
+            "email": "fagui.zhu@foxmail.com",
+            "homepage": "https://github.com/Verdient"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/Verdient/validator/issues",
+        "source": "https://github.com/Verdient/validator"
+    },
+    "require": {
+        "php": ">=7.0.0",
+        "verdient/chorus": "~0.0.5"
+    },
+    "autoload": {
+        "psr-4": {"Verdient\\Validator\\": "src"}
+    }
+}
