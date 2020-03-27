@@ -5,10 +5,10 @@
 use Verdient\Validator\Validation;
 
 /**
-	* 限定条件，格式为数组
-	* 第一级的Key为字段的名称，value为索引数组，数组内的每一个数组代表一个校验规则
-	* 校验规则格式为：第一个元素为校验器的名字，其后的参数为注入到校验器内的参数
-	*/
+ * 限定条件，格式为数组
+ * 第一级的Key为字段的名称，value为索引数组，数组内的每一个数组代表一个校验规则
+ * 校验规则格式为：第一个元素为校验器的名字，其后的参数为注入到校验器内的参数
+ */
 $constraints = [
 		'mobile' => [
 			['mobile'], //规则1，要求必须是手机号码
@@ -23,8 +23,8 @@ $constraints = [
 ];
 
 /**
-	* 要校验的数据
-	*/
+ * 要校验的数据
+ */
 $data = [
 	'mobile' => '15757116316',
 	'date' => '2020-02-02',
@@ -33,7 +33,7 @@ $data = [
 
 $result = $validation->validate($data); //返回结果为true或false
 ```
-# 校验单个数据
+## 校验单个数据
 ```php
 use Verdient\Validator\Validators\In;
 
@@ -118,7 +118,7 @@ $message = (string) $errors;
 	</tr>
 	<tr>
 		<td rowspan="5">date</td>
-		<td rowspan="5">校验是否是日期</td>
+		<td rowspan="5">校验是否为日期</td>
 		<td>format [Y-m-d]</td>
 		<td>格式</td>
 	</tr>
