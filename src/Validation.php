@@ -24,7 +24,9 @@ class Validation extends \chorus\BaseObject
 		'ip' => 'Verdient\Validator\Validators\Ip',
 		'url' => 'Verdient\Validator\Validators\Url',
 		'chineseIDCard' => 'Verdient\Validator\Validators\ChineseIDCard',
-		'uuid' => 'Verdient\Validator\Validators\Uuid'
+		'uuid' => 'Verdient\Validator\Validators\Uuid',
+		'array' => 'Verdient\Validator\Validators\ArrayList',
+		'bool' => 'Verdient\Validator\Validators\Boolean'
 	];
 
 	/**

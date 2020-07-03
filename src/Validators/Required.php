@@ -17,6 +17,12 @@ class Required extends \Verdient\Validator\Validator
 	 * @inheritdoc
 	 * @author Verdient。
 	 */
+	public $allowArray = true;
+
+	/**
+	 * @inheritdoc
+	 * @author Verdient。
+	 */
 	public $message = '{name}不能为空';
 
 	/**
@@ -24,7 +30,7 @@ class Required extends \Verdient\Validator\Validator
 	 * @author Verdient。
 	 */
 	protected function verify($value){
-		if(empty($value)){
+		if(empty($value) && $value !== 0 && $value !== false){
 			return [$this->message];
 		}
 		return [];

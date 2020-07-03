@@ -90,7 +90,7 @@ class Str extends \Verdient\Validator\Validator
 			if(is_integer($this->length)){
 				$length = mb_strlen($value, $charset);
 				if($length !== $this->length){
-					$message[] = [$this->wrongLength];
+					$message[] = $this->wrongLength;
 				}
 			}else{
 				$length = mb_strlen($value, $charset);
