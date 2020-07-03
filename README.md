@@ -214,4 +214,16 @@ $message = (string) $errors;
 		<td>version [*]</td>
 		<td>特定的版本，*代表所有版本</td>
 	</tr>
+	<tr>
+		<td>array</td>
+		<td>校验是否为数组</td>
+		<td>indexded[false]</td>
+		<td>是否仅索引数组</td>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>校验是否为布尔值</td>
+		<td></td>
+		<td></td>
+	</tr>
 </table>

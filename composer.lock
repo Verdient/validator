@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "verdient/chorus",
-            "version": "0.0.5",
+            "version": "0.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Verdient/chorus.git",
-                "reference": "8d7765d442cd6ff6b45a55fe24d27648aad30bc6"
+                "reference": "e8beca0453a4072f9ed1e4c9ac36f0d1f17066fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Verdient/chorus/zipball/8d7765d442cd6ff6b45a55fe24d27648aad30bc6",
-                "reference": "8d7765d442cd6ff6b45a55fe24d27648aad30bc6",
+                "url": "https://api.github.com/repos/Verdient/chorus/zipball/e8beca0453a4072f9ed1e4c9ac36f0d1f17066fa",
+                "reference": "e8beca0453a4072f9ed1e4c9ac36f0d1f17066fa",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -53,7 +53,7 @@
                 "basic",
                 "support"
             ],
-            "time": "2020-02-11T13:05:18+00:00"
+            "time": "2020-04-09T10:52:04+00:00"
         }
     ],
     "packages-dev": [],
