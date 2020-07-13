@@ -67,22 +67,78 @@ class Validation extends \chorus\BaseObject
 		}
 		foreach($this->constraints as $name => $constraints){
 			foreach($constraints as $constraint){
-				$class = array_shift($constraint);
-				if(isset(static::BUILT_IN_VALIDATORS[$class])){
-					$class = static::BUILT_IN_VALIDATORS[$class];
-				}
-				$validator = new $class($constraint);
-				$exists = array_key_exists($name, $data);
-				$value = $exists ? $data[$name] : null;
-				if(!$validator->validate($value, $name)){
-					unset($this->data[$name]);
-					$this->errors->addError($name, $validator->getErrors());
-				}else if($exists){
-					$this->data[$name] = $value;
+				if($validator = $this->getValidator($constraint, $data)){
+					$exists = array_key_exists($name, $data);
+					$value = $exists ? $data[$name] : null;
+					if(!$validator->validate($value, $name)){
+						unset($this->data[$name]);
+						$this->errors->addError($name, $validator->getErrors());
+					}else if($exists){
+						$this->data[$name] = $value;
+					}
 				}
 			}
 		}
 		return !$this->errors->hasError();
+	}
+
+	/**
+	 * 获取校验器
+	 * @param string $class 类名称
+	 * @param $params 参数
+	 * @param $data 原始数据
+	 * @return Validator
+	 * @author Verdient。
+	 */
+	protected function getValidator($constraint, $data){
+		$class = array_shift($constraint);
+		if(isset(static::BUILT_IN_VALIDATORS[$class])){
+			$class = static::BUILT_IN_VALIDATORS[$class];
+		}
+		if(isset($constraint['when'])){
+			if(is_array($constraint['when'])){
+				$when = $constraint['when'];
+				$name = $when[0];
+				$operator = $when[1];
+				$value = isset($when[2]) ? $when[2] : null;
+				if(!$this->compareValue($data, $name, $value, $operator)){
+					return null;
+				}
+			}
+			unset($constraint['when']);
+		}
+		return new $class($constraint);
+	}
+
+	/**
+	 * 比较值
+	 * @param array $data 数据
+	 * @param string $name 名称
+	 * @param mixed $value 值
+	 * @param string $operator 操作符
+	 * @author Verdient。
+	 */
+	protected function compareValue($data, $name, $value, $operator){
+		switch($operator){
+			case '=':
+				return isset($data[$name]) && $data[$name] == $value;
+			case '!=':
+				return isset($data[$name]) && $data[$name] != $value;
+			case '>':
+				return isset($data[$name]) && $data[$name] > $value;
+			case '>=':
+				return isset($data[$name]) && $data[$name] >= $value;
+			case '<':
+				return isset($data[$name]) && $data[$name] < $value;
+			case '<=':
+				return isset($data[$name]) && $data[$name] <= $value;
+			case 'empty':
+				return !isset($data[$name]) || empty($data[$name]);
+			case 'notEmpty':
+				return isset($data[$name]) && !empty($data[$name]);
+			default:
+				return false;
+		}
 	}
 
 	/**

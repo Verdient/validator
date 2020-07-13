@@ -59,7 +59,7 @@ $message = (string) $errors;
 		<th>简述</th>
 		<th>参数 [默认值]</th>
 		<th>释义</th>
-	</tr >
+	</tr>
 	<tr>
 		<td>required</td>
 		<td>校验是否为空</td>
@@ -227,3 +227,54 @@ $message = (string) $errors;
 		<td></td>
 	</tr>
 </table>
+
+# 公共参数
+<table>
+	<tr>
+		<th>名称</th>
+		<th>简述</th>
+		<th>参数 [默认值]</th>
+		<th>释义</th>
+	</tr>
+	<tr>
+		<td>skipOnEmpty</td>
+		<td>是否在为空时跳过</td>
+		<td>bool[true]</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>allowArray</td>
+		<td>是否允许数组</td>
+		<td>bool[true]</td>
+		<td>当该值为true时，相当于循环调用校验器（除array校验器）</td>
+	</tr>
+	<tr>
+		<td>message</td>
+		<td>校验错误时的提示信息</td>
+		<td>{name}校验失败</td>
+		<td>{name}会被替换为属性名称</td>
+	</tr>
+	<tr>
+		<td>isArray</td>
+		<td>传入数据为数组时的提示信息</td>
+		<td>{name}不能为数组(对象)</td>
+		<td>仅在allowArray为false时生效</td>
+	</tr>
+	<tr>
+		<td>when</td>
+		<td>限定条件</td>
+		<td>array[null]</td>
+		<td>只有符合限定条件是时，校验器才会执行</td>
+	</tr>
+<table>
+
+## 限定条件
+可以在声明限定条件时指定when参数来限定校验器的执行，只有当限定条件满足时，校验器才会真正的被执行，否则将会跳过校验器的检查。
+
+参数的格式为：
+```php
+$when = ['{name}', '{operator}', '{comparedValue}'];
+```
+name代指属性名称，operator为操作符，comparedValue为被比较的值
+
+其中name和value必填，comparedValue默认为空

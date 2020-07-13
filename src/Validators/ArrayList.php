@@ -1,6 +1,8 @@
 <?php
 namespace Verdient\Validator\Validators;
 
+use chorus\ArrayHelper;
+
 /**
  * 数组校验器
  * @author Verdient。
@@ -69,13 +71,6 @@ class ArrayList extends \Verdient\Validator\Validator
 	 * @author Verdient。
 	 */
 	protected function isIndexd($value){
-		$i = 0;
-		foreach($value as $key => $value){
-			if($key !== $i){
-				return false;
-			}
-			$i ++;
-		}
-		return true;
+		return ArrayHelper::isIndexed($value);
 	}
 }
