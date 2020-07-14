@@ -29,7 +29,23 @@ class In extends \Verdient\Validator\Validator
 	 * @inheritdoc
 	 * @author Verdient。
 	 */
+	public function init(){
+		parent::init();
+		foreach($this->range as &$value){
+			if(is_numeric($value)){
+				$value = (string) $value;
+			}
+		}
+	}
+
+	/**
+	 * @inheritdoc
+	 * @author Verdient。
+	 */
 	protected function verify($value){
+		if(is_numeric($value)){
+			$value = (string) ($value);
+		}
 		if(!in_array($value, $this->range, $this->strict)){
 			return [$this->message];
 		}
