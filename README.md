@@ -226,6 +226,24 @@ $message = (string) $errors;
 		<td></td>
 		<td></td>
 	</tr>
+	<tr>
+		<td>money</td>
+		<td>校验是否为金额</td>
+		<td>参数同decimal</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>snowflake</td>
+		<td>校验是否为Snowflake ID</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>pagination</td>
+		<td>校验是否为页码及分页大小</td>
+		<td>参数同integer</td>
+		<td></td>
+	</tr>
 </table>
 
 # 公共参数
