@@ -28,7 +28,8 @@ class Validation extends \chorus\BaseObject
 		'array' => 'Verdient\Validator\Validators\ArrayList',
 		'bool' => 'Verdient\Validator\Validators\Boolean',
 		'money' => 'Verdient\Validator\Validators\Money',
-		'snowflake' => 'Verdient\Validator\Validators\Snowflake'
+		'snowflake' => 'Verdient\Validator\Validators\Snowflake',
+		'pagination' => 'Verdient\Validator\Validators\Pagination'
 	];
 
 	/**

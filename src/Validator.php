@@ -128,6 +128,9 @@ abstract class Validator extends \chorus\BaseObject
 	 * @author Verdient。
 	 */
 	public function isEmpty($value){
+		if(is_scalar($value)){
+			return $value === null || $value === '';
+		}
 		return empty($value);
 	}
 
