@@ -38,9 +38,6 @@ class ArrayList extends \Verdient\Validator\Validator
 	 * @author Verdient。
 	 */
 	public function validate($value, $name = '参数'){
-		if($this->skipOnEmpty === true && $this->isEmpty($value)){
-			return true;
-		}
 		if(!is_array($value)){
 			$this->addError($this->message, [
 				'name' => $name

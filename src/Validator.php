@@ -55,31 +55,25 @@ abstract class Validator extends \chorus\BaseObject
 	 * @author Verdient。
 	 */
 	public function validate($value, $name = '参数'){
-		$skip = false;
-		if($this->skipOnEmpty === true && $this->isEmpty($value)){
-			$skip = true;
+		if(is_array($value)){
+			if($this->allowArray !== true){
+				$this->addError($this->isArray, [
+					'name' => $name
+				]);
+				return false;
+			}
+		}else{
+			$value = [$value];
 		}
-		if($skip === false){
-			if(is_array($value)){
-				if($this->allowArray !== true){
-					$this->addError($this->isArray, [
+		foreach($value as $element){
+			$result = $this->verify($element, $name);
+			if(!empty($result)){
+				foreach($result as $message){
+					$this->addError($message, [
 						'name' => $name
 					]);
-					return false;
 				}
-			}else{
-				$value = [$value];
-			}
-			foreach($value as $element){
-				$result = $this->verify($element, $name);
-				if(!empty($result)){
-					foreach($result as $message){
-						$this->addError($message, [
-							'name' => $name
-						]);
-					}
-					return false;
-				}
+				return false;
 			}
 		}
 		return true;

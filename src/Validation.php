@@ -26,7 +26,9 @@ class Validation extends \chorus\BaseObject
 		'chineseIDCard' => 'Verdient\Validator\Validators\ChineseIDCard',
 		'uuid' => 'Verdient\Validator\Validators\Uuid',
 		'array' => 'Verdient\Validator\Validators\ArrayList',
-		'bool' => 'Verdient\Validator\Validators\Boolean'
+		'bool' => 'Verdient\Validator\Validators\Boolean',
+		'money' => 'Verdient\Validator\Validators\Money',
+		'snowflake' => 'Verdient\Validator\Validators\Snowflake'
 	];
 
 	/**
@@ -70,11 +72,13 @@ class Validation extends \chorus\BaseObject
 				if($validator = $this->getValidator($constraint, $data)){
 					$exists = array_key_exists($name, $data);
 					$value = $exists ? $data[$name] : null;
-					if(!$validator->validate($value, $name)){
-						unset($this->data[$name]);
-						$this->errors->addError($name, $validator->getErrors());
-					}else if($exists){
-						$this->data[$name] = $value;
+					if($validator->skipOnEmpty !== true || !$validator->isEmpty($value)){
+						if(!$validator->validate($value, $name)){
+							unset($this->data[$name]);
+							$this->errors->addError($name, $validator->getErrors());
+						}else if($exists){
+							$this->data[$name] = $value;
+						}
 					}
 				}
 			}

@@ -49,10 +49,10 @@ class Integer extends \Verdient\Validator\Validator
 			if(strpos($value, '.') !== false){
 				$message[] = $this->message;
 			}else{
-				if($this->min !== false && $value < $this->min){
+				if($this->min !== false && bccomp($value, $this->min, 0) === -1){
 					$message[] = $this->tooSmall;
 				}
-				if($this->max !== false && $value > $this->max){
+				if($this->max !== false && bccomp($value, $this->max, 0) === 1){
 					$message[] = $this->tooBig;
 				}
 			}

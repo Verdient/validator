@@ -8,9 +8,7 @@ namespace Verdient\Validator\Validators;
 class Uuid extends \Verdient\Validator\Validator
 {
 	/**
-	 * @var public $version
-	 * 版本
-	 * --------------------
+	 * @var int|string 版本
 	 * @author Verdient。
 	 */
 	public $version = '*';
