@@ -30,7 +30,7 @@ class Required extends \Verdient\Validator\Validator
 	 * @author Verdient。
 	 */
 	protected function verify($value){
-		if(empty($value) && $value !== 0 && $value !== false){
+		if($this->isEmpty($value)){
 			return [$this->message];
 		}
 		return [];
