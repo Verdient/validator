@@ -66,7 +66,7 @@ abstract class Validator extends \chorus\BaseObject
 			$value = [$value];
 		}
 		foreach($value as $element){
-			$result = $this->verify($element, $name);
+			$result = $this->verify($element);
 			if(!empty($result)){
 				foreach($result as $message){
 					$this->addError($message, [
