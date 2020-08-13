@@ -284,6 +284,12 @@ $message = (string) $errors;
 		<td>array[null]</td>
 		<td>只有符合限定条件是时，校验器才会执行</td>
 	</tr>
+	<tr>
+		<td>name</td>
+		<td>显示的名称</td>
+		<td>string[null]</td>
+		<td>用于覆盖错误信息中字段的名称</td>
+	</tr>
 <table>
 
 ## 限定条件

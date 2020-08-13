@@ -70,13 +70,19 @@ class Validation extends \chorus\BaseObject
 		}
 		foreach($this->constraints as $name => $constraints){
 			foreach($constraints as $constraint){
+				if(isset($constraint['name'])){
+					$name2 = $constraint['name'];
+					unset($constraint['name']);
+				}else{
+					$name2 = $name;
+				}
 				if($validator = $this->getValidator($constraint, $data)){
 					$exists = array_key_exists($name, $data);
 					$value = $exists ? $data[$name] : null;
 					if($validator->skipOnEmpty !== true || !$validator->isEmpty($value)){
-						if(!$validator->validate($value, $name)){
+						if(!$validator->validate($value, $name2)){
 							unset($this->data[$name]);
-							$this->errors->addError($name, $validator->getErrors());
+							$this->errors->addError($name2, $validator->getErrors());
 						}else if($exists){
 							$this->data[$name] = $value;
 						}
