@@ -244,6 +244,12 @@ $message = (string) $errors;
 		<td>参数同integer</td>
 		<td></td>
 	</tr>
+	<tr>
+		<td>safe</td>
+		<td>安全校验器，该校验器不会对数据做任何校验，用于从data()函数直接获取传入的数据</td>
+		<td></td>
+		<td></td>
+	</tr>
 </table>
 
 # 公共参数

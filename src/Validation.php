@@ -29,7 +29,8 @@ class Validation extends \chorus\BaseObject
 		'bool' => 'Verdient\Validator\Validators\Boolean',
 		'money' => 'Verdient\Validator\Validators\Money',
 		'snowflake' => 'Verdient\Validator\Validators\Snowflake',
-		'pagination' => 'Verdient\Validator\Validators\Pagination'
+		'pagination' => 'Verdient\Validator\Validators\Pagination',
+		'safe' => 'Verdient\Validator\Validators\Safe',
 	];
 
 	/**
@@ -68,6 +69,8 @@ class Validation extends \chorus\BaseObject
 		if(!is_array($data)){
 			$data = [];
 		}
+		$oks = [];
+		$errors = [];
 		foreach($this->constraints as $name => $constraints){
 			foreach($constraints as $constraint){
 				if(isset($constraint['name'])){
@@ -81,16 +84,23 @@ class Validation extends \chorus\BaseObject
 					$value = $exists ? $data[$name] : null;
 					if($validator->skipOnEmpty !== true || !$validator->isEmpty($value)){
 						if(!$validator->validate($value, $name2)){
-							unset($this->data[$name]);
+							$errors[] = $name;
 							$this->errors->addError($name2, $validator->getErrors());
 						}else if($exists){
-							$this->data[$name] = $value;
+							$oks[] = $name;
 						}
 					}
 				}
 			}
 		}
-		return !$this->errors->hasError();
+		if(!$this->errors->hasError()){
+			$names = array_diff(array_unique($oks), array_unique($errors));
+			foreach($names as $name){
+				$this->data[$name] = $data[$name];
+			}
+			return true;
+		}
+		return false;
 	}
 
 	/**
