@@ -7,15 +7,15 @@ namespace Verdient\Validator\Validators;
  */
 class Money extends Decimal
 {
-	/**
-	 * @inheritdoc
-	 * @author Verdient。
-	 */
-	public $decimal = 2;
+    /**
+     * @inheritdoc
+     * @author Verdient。
+     */
+    public $decimal = 2;
 
-	/**
-	 * @inheritdoc
-	 * @author Verdient。
-	 */
-	public $min = 0;
+    /**
+     * @inheritdoc
+     * @author Verdient。
+     */
+    public $min = 0;
 }

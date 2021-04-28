@@ -7,9 +7,9 @@ namespace Verdient\Validator\Validators;
  */
 class Pagination extends Integer
 {
-	/**
-	 * @inheritdoc
-	 * @author Verdient。
-	 */
-	public $min = 1;
+    /**
+     * @inheritdoc
+     * @author Verdient。
+     */
+    public $min = 1;
 }
