@@ -139,8 +139,8 @@ $message = (string) $errors;
 		<td>日期过大提示信息</td>
 	</tr>
 	<tr>
-		<td rowspan="4">number | integer | decimal</td>
-		<td rowspan="4">校验是否为数字 | 整数 | 小数</td>
+		<td rowspan="4">number | integer | int</td>
+		<td rowspan="4">校验是否为数字 | 整数</td>
 		<td>min [false]</td>
 		<td>最小</td>
 	</tr>
@@ -155,6 +155,32 @@ $message = (string) $errors;
 	<tr>
 		<td>tooBig</td>
 		<td>数字过大提示信息</td>
+	</tr>
+	<tr>
+		<td rowspan="6">decimal</td>
+		<td rowspan="6">校验是否小数</td>
+		<td>min [false]</td>
+		<td>最小</td>
+	</tr>
+	<tr>
+		<td>max [false]</td>
+		<td>最大</td>
+	</tr>
+	<tr>
+		<td>tooSmall</td>
+		<td>数字过小提示信息</td>
+	</tr>
+	<tr>
+		<td>tooBig</td>
+		<td>数字过大提示信息</td>
+	</tr>
+	<tr>
+		<td>decimal</td>
+		<td>做多允许的小数点位数</td>
+	</tr>
+	<tr>
+		<td>wrongDecimal</td>
+		<td>当小数点错误时的提示</td>
 	</tr>
 	<tr>
 		<td>email</td>
@@ -215,10 +241,56 @@ $message = (string) $errors;
 		<td>特定的版本，*代表所有版本</td>
 	</tr>
 	<tr>
-		<td>array</td>
-		<td>校验是否为数组</td>
+		<td rowspan="8">array</td>
+		<td rowspan="8">校验是否为数组</td>
 		<td>indexded[false]</td>
 		<td>是否仅索引数组</td>
+	</tr>
+	<tr>
+		<td>distinct</td>
+		<td>是否不允许重复值[false]</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>min</td>
+		<td>数组中元素数量下限[false]</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>max</td>
+		<td>数组中元素数量上限[false]</td>
+		<td></td>
+		<td></td>
+	</tr>
+	</tr>
+		<tr>
+		<td>noIndexd</td>
+		<td>数组不为索引数组时的提示</td>
+		<td></td>
+		<td></td>
+	</tr>
+	</tr>
+		<tr>
+		<td>hasDuplicate</td>
+		<td>数组中存在重复值时的提示</td>
+		<td></td>
+		<td></td>
+	</tr>
+	</tr>
+		<tr>
+		<td>tooSmall</td>
+		<td>数组过小时的提示</td>
+		<td></td>
+		<td></td>
+	</tr>
+	</tr>
+		<tr>
+		<td>tooBig</td>
+		<td>数组过大时的提示</td>
+		<td></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>bool</td>

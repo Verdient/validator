@@ -24,6 +24,7 @@ class Validation extends BaseObject
         'date' => 'Verdient\Validator\Validators\Date',
         'number' => 'Verdient\Validator\Validators\Number',
         'integer' => 'Verdient\Validator\Validators\Integer',
+        'int' => 'Verdient\Validator\Validators\Integer',
         'decimal' => 'Verdient\Validator\Validators\Decimal',
         'email' => 'Verdient\Validator\Validators\Email',
         'ip' => 'Verdient\Validator\Validators\Ip',
@@ -36,6 +37,7 @@ class Validation extends BaseObject
         'snowflake' => 'Verdient\Validator\Validators\Snowflake',
         'pagination' => 'Verdient\Validator\Validators\Pagination',
         'safe' => 'Verdient\Validator\Validators\Safe',
+        'group' => 'Verdient\Validator\Validators\Group'
     ];
 
     /**
