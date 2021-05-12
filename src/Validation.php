@@ -37,6 +37,7 @@ class Validation extends BaseObject
         'snowflake' => 'Verdient\Validator\Validators\Snowflake',
         'pagination' => 'Verdient\Validator\Validators\Pagination',
         'safe' => 'Verdient\Validator\Validators\Safe',
+        'associate' => 'Verdient\Validator\Validators\Associate',
         'group' => 'Verdient\Validator\Validators\Group'
     ];
 
